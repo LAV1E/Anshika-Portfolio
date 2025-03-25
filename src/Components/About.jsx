@@ -30,16 +30,16 @@ const About = () => {
   const techStack = [
     { name: "React", color: "text-blue-400" },
     { name: "Next.js", color: "text-white" },
-    { name: "TypeScript", color: "text-blue-600" },
+    { name: "JavaScript", color: "text-blue-600" },
     { name: "Tailwind", color: "text-cyan-400" },
     { name: "Node.js", color: "text-green-500" },
     { name: "Java", color: "text-red-500" },
-    { name: "GraphQL", color: "text-pink-500" },
+    { name: "MySQL", color: "text-pink-500" },
     { name: "MongoDB", color: "text-green-400" },
-    { name: "PostgreSQL", color: "text-blue-300" },
-    { name: "Docker", color: "text-blue-200" },
-    { name: "Kubernetes", color: "text-blue-500" },
-    { name: "AWS", color: "text-orange-400" },
+    { name: "Bootstrap", color: "text-blue-300" },
+    { name: "Dsa", color: "text-blue-200" },
+    { name: "git & Github", color: "text-blue-500" },
+    { name: "Api", color: "text-orange-400" },
   ];
 
   // Duplicate the array to create seamless looping
