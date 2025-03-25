@@ -1,10 +1,11 @@
 import React from 'react';
 import { Code, Laptop, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-scroll';
 
 const Services = () => {
   return (
-    <div className="relative bg-[#0e0c1e] text-white py-24">
+    <section id="services" className="relative bg-[#0e0c1e] text-white pt-24 pb-16">
       <div className="container mx-auto px-6 lg:px-16">
         {/* Title */}
         <motion.h2
@@ -21,7 +22,10 @@ const Services = () => {
           {/* Service 1 */}
           <motion.div
             className="group p-6 bg-[#1c1c32] rounded-xl border border-[#3b3b5c] hover:border-[#a855f7] shadow-lg transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 10px 25px -5px rgba(168, 85, 247, 0.3)"
+            }}
             whileTap={{ scale: 0.98 }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -41,7 +45,10 @@ const Services = () => {
           {/* Service 2 */}
           <motion.div
             className="group p-6 bg-[#1c1c32] rounded-xl border border-[#3b3b5c] hover:border-[#8b5cf6] shadow-lg transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 10px 25px -5px rgba(139, 92, 246, 0.3)"
+            }}
             whileTap={{ scale: 0.98 }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -61,7 +68,10 @@ const Services = () => {
           {/* Service 3 */}
           <motion.div
             className="group p-6 bg-[#1c1c32] rounded-xl border border-[#3b3b5c] hover:border-[#3b82f6] shadow-lg transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.3)"
+            }}
             whileTap={{ scale: 0.98 }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -78,8 +88,38 @@ const Services = () => {
             </div>
           </motion.div>
         </div>
+
+        {/* CTA Section */}
+        <motion.div
+          className="mt-16 text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          <Link
+            to="contact"
+            smooth={true}
+            duration={500}
+            offset={-80}
+            className="inline-block"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-[#a855f7] to-[#ec4899] text-white px-8 py-3 rounded-full shadow-lg transition-all duration-300"
+            >
+              Get Started With Me
+            </motion.button>
+          </Link>
+        </motion.div>
       </div>
-    </div>
+
+      {/* Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-900/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-pink-900/20 rounded-full blur-3xl"></div>
+      </div>
+    </section>
   );
 };
 

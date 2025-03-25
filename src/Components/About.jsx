@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Laptop, Rocket, Sparkles, Cpu, Database } from 'lucide-react';
+import { Link } from 'react-scroll';
 
 const About = () => {
   const floatingVariants = {
@@ -42,11 +43,10 @@ const About = () => {
     { name: "Api", color: "text-orange-400" },
   ];
 
-  // Duplicate the array to create seamless looping
   const duplicatedTechStack = [...techStack, ...techStack];
 
   return (
-    <div className="relative bg-gradient-to-br from-[#0a0a12] to-[#1a1a2e] text-white py-16 md:py-28 overflow-hidden">
+    <section id="about" className="relative bg-gradient-to-br from-[#0a0a12] to-[#1a1a2e] text-white pt-24 pb-16 md:py-28 overflow-hidden">
       {/* Floating particles */}
       {[...Array(15)].map((_, i) => (
         <motion.div
@@ -93,76 +93,73 @@ const About = () => {
           </motion.div>
         </motion.div>
 
-        {/* Responsive layout for profile and description */}
+        {/* Profile and description section */}
         <div className="flex flex-col lg:flex-row items-center justify-center gap-6 md:gap-12 mb-8 md:mb-16 w-full px-4 sm:px-6">
-  {/* Profile card with responsive sizing */}
-  <motion.div
-    initial={{ opacity: 0, x: -100, rotateY: 90 }}
-    animate={{ opacity: 1, x: 0, rotateY: 0 }}
-    transition={{ duration: 1, delay: 0.3 }}
-    className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden shadow-xl border-2 border-purple-500/30 mb-6 lg:mb-0 flex-shrink-0"
-    whileHover={{ y: -10 }}
-  >
-    <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
-      <Cpu size={48} className="text-white/90" />
-    </div>
-    <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-3 sm:p-4 backdrop-blur-md">
-      <h3 className="text-lg sm:text-xl font-bold text-white">Anshika</h3>
-      <p className="text-purple-300 text-xs sm:text-sm">Frontend Developer</p>
-    </div>
-  </motion.div>
-
-  {/* Optimized text paragraph for all devices */}
-  <motion.div
-    initial={{ opacity: 0, x: 100 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ duration: 1, delay: 0.6 }}
-    className="max-w-full lg:max-w-2xl w-full"
-  >
-    <div className="relative">
-      <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-snug sm:leading-relaxed">
-        Hey there! I'm <span className="text-purple-300 font-semibold">Anshika</span>, a passionate{' '}
-        <span className="text-purple-400">Frontend Developer</span> at{' '}
-        <span className="text-purple-400">Mendzone</span> with expertise in modern web technologies. 
-        I specialize in creating immersive digital experiences that blend beautiful design with 
-        cutting-edge functionality.
-      </p>
-    </div>
-
-    {/* Infinite Scrolling Tech Stack */}
-    <motion.div 
-      className="mt-4 md:mt-6 overflow-x-hidden w-full"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 1.8 }}
-    >
-      <motion.div
-        className="flex gap-2 w-max"
-        animate={{
-          x: ['0%', '-100%'],
-        }}
-        transition={{
-          duration: 20,
-          ease: "linear",
-          repeat: Infinity,
-        }}
-      >
-        {duplicatedTechStack.map((tech, i) => (
-          <motion.span
-            key={`${tech.name}-${i}`}
-            className={`px-3 py-1 md:px-4 md:py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 ${tech.color} font-medium flex-shrink-0 text-xs sm:text-sm md:text-base`}
-            whileHover={{ y: -2, scale: 1.05 }}
+          <motion.div
+            initial={{ opacity: 0, x: -100, rotateY: 90 }}
+            animate={{ opacity: 1, x: 0, rotateY: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden shadow-xl border-2 border-purple-500/30 mb-6 lg:mb-0 flex-shrink-0"
+            whileHover={{ y: -10 }}
           >
-            {tech.name}
-          </motion.span>
-        ))}
-      </motion.div>
-    </motion.div>
-  </motion.div>
-</div>
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
+              <Cpu size={48} className="text-white/90" />
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-3 sm:p-4 backdrop-blur-md">
+              <h3 className="text-lg sm:text-xl font-bold text-white">Anshika</h3>
+              <p className="text-purple-300 text-xs sm:text-sm">Frontend Developer</p>
+            </div>
+          </motion.div>
 
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="max-w-full lg:max-w-2xl w-full"
+          >
+            <div className="relative">
+              <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-snug sm:leading-relaxed">
+                Hey there! I'm <span className="text-purple-300 font-semibold">Anshika</span>, a passionate{' '}
+                <span className="text-purple-400">Frontend Developer</span> at{' '}
+                <span className="text-purple-400">Mendzone</span> with expertise in modern web technologies. 
+                I specialize in creating immersive digital experiences that blend beautiful design with 
+                cutting-edge functionality.
+              </p>
+            </div>
 
-        {/* Animated Stats Cards - Responsive */}
+            {/* Tech Stack Scroller */}
+            <motion.div 
+              className="mt-4 md:mt-6 overflow-x-hidden w-full"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.8 }}
+            >
+              <motion.div
+                className="flex gap-2 w-max"
+                animate={{
+                  x: ['0%', '-100%'],
+                }}
+                transition={{
+                  duration: 20,
+                  ease: "linear",
+                  repeat: Infinity,
+                }}
+              >
+                {duplicatedTechStack.map((tech, i) => (
+                  <motion.span
+                    key={`${tech.name}-${i}`}
+                    className={`px-3 py-1 md:px-4 md:py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 ${tech.color} font-medium flex-shrink-0 text-xs sm:text-sm md:text-base`}
+                    whileHover={{ y: -2, scale: 1.05 }}
+                  >
+                    {tech.name}
+                  </motion.span>
+                ))}
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
           {/* Experience Card */}
           <motion.div
@@ -205,7 +202,7 @@ const About = () => {
               <h3 className="text-xl md:text-2xl font-bold">Projects</h3>
             </div>
             <p className="text-4xl md:text-5xl font-extrabold mb-1 md:mb-2">20+</p>
-            <p className="text-gray-400 text-sm md:text-base"> Projects </p>
+            <p className="text-gray-400 text-sm md:text-base">Projects Completed</p>
             <motion.div
               className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-pink-400 to-purple-400"
               initial={{ width: 0 }}
@@ -229,8 +226,8 @@ const About = () => {
               </div>
               <h3 className="text-xl md:text-2xl font-bold">Full Stack</h3>
             </div>
-            <p className="text-4xl md:text-5xl font-extrabold mb-1 md:mb-2"></p>
-            <p className="text-gray-400 text-sm md:text-base">Full Stack </p>
+            <p className="text-4xl md:text-5xl font-extrabold mb-1 md:mb-2">5</p>
+            <p className="text-gray-400 text-sm md:text-base">Full Stack Projects</p>
             <motion.div
               className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-cyan-400 to-blue-400"
               initial={{ width: 0 }}
@@ -240,7 +237,7 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* Animated Quote - Responsive */}
+        {/* Quote Section */}
         <motion.div
           className="mt-16 md:mt-20 text-center px-4"
           initial={{ opacity: 0 }}
@@ -261,11 +258,35 @@ const About = () => {
           </motion.div>
         </motion.div>
 
-        {/* Floating Gradient Effects */}
+        {/* CTA Button */}
+        <motion.div
+          className="mt-12 text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.5 }}
+        >
+          <Link
+            to="contact"
+            smooth={true}
+            duration={500}
+            offset={-80}
+            className="inline-block"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-purple-500 hover:bg-purple-600 text-white px-8 py-3 rounded-full shadow-lg transition-all duration-300"
+            >
+              Let's Work Together
+            </motion.button>
+          </Link>
+        </motion.div>
+
+        {/* Background effects */}
         <div className="absolute top-1/4 left-[-100px] w-[300px] md:w-[400px] h-[300px] md:h-[400px] bg-purple-500/20 rounded-full blur-3xl animate-float-slow"></div>
         <div className="absolute bottom-1/4 right-[-100px] w-[300px] md:w-[400px] h-[300px] md:h-[400px] bg-pink-500/20 rounded-full blur-3xl animate-float-slow-delay"></div>
       </div>
-    </div>
+    </section>
   );
 };
 

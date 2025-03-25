@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoCloseSharp } from "react-icons/io5";
 import { motion } from 'framer-motion';
+import { Link } from 'react-scroll';
 import resume from '../assets/AnshikaBundela\'sResume.pdf';
+
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
 
   const items = [
-    { id: 1, name: 'About' },
-    { id: 2, name: 'Service' },
-    { id: 3, name: 'Work' },
-    { id: 4, name: 'Contact' }
+    { id: 1, name: 'About', to: 'about' },
+    { id: 2, name: 'Services', to: 'services' }, 
+    { id: 3, name: 'Contact', to: 'contact' }
   ];
 
   return (
@@ -23,17 +24,32 @@ const Navbar = () => {
         className="container mx-auto hidden md:flex justify-between items-center py-6"
       >
         {/* Logo */}
-        <div className="text-xl lg:text-2xl font-bold flex items-center gap-1">
+        <Link 
+          to="home" 
+          smooth={true} 
+          duration={500}
+          className="text-xl lg:text-2xl font-bold flex items-center gap-1 cursor-pointer"
+        >
           <span className="text-white">Anshika's</span>
           <span className="text-purple-500">Portfolio</span>
-        </div>
+        </Link>
 
         {/* Navigation Items */}
         <div>
           <ul className="cursor-pointer hidden md:flex items-center space-x-6 list-none lg:text-lg md:text-base text-sm text-white">
-            {items.map(({ id, name }) => (
+            {items.map(({ id, name, to }) => (
               <li key={id} className="hover:text-purple-500 transition duration-200">
-                {name}
+                <Link
+                  to={to}
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                  offset={-80}
+                  className="cursor-pointer"
+                  activeClass="text-purple-400 font-medium"
+                >
+                  {name}
+                </Link>
               </li>
             ))}
           </ul>
@@ -41,8 +57,8 @@ const Navbar = () => {
 
         {/* Download Resume Button */}
         <a
-          className="md:text-base lg:text-lg bg-purple-500 hover:bg-purple-400 text-white px-4 py-2 rounded-full"
-            href={resume}
+          className="md:text-base lg:text-lg bg-purple-500 hover:bg-purple-400 text-white px-4 py-2 rounded-full transition duration-300"
+          href={resume}
           download="AnshikaBundela'sResume.pdf"
         >
           Download Resume
@@ -60,10 +76,16 @@ const Navbar = () => {
         )}
 
         {/* Logo */}
-        <div className="text-xl font-bold flex items-center gap-2 z-20">
+        <Link 
+          to="home" 
+          smooth={true} 
+          duration={500}
+          className="text-xl font-bold flex items-center gap-2 z-20"
+          onClick={() => setMenu(false)}
+        >
           <span className="text-white">Anshika's</span>
           <span className="text-purple-500">Portfolio</span>
-        </div>
+        </Link>
 
         {/* Menu Button */}
         <div 
@@ -97,31 +119,42 @@ const Navbar = () => {
             open: { x: 0, opacity: 1, transition: { type: 'spring', stiffness: 80 } },
             closed: { x: '-100%', opacity: 0, transition: { duration: 0.3 } },
           }}
-          className="bg-white w-4/5 h-screen fixed top-0 left-0 z-20 shadow-xl rounded-r-lg"
+          className="bg-[#0e0c1e] w-4/5 h-screen fixed top-0 left-0 z-20 shadow-xl border-r border-purple-900/50"
         >
           <div className="px-7 py-6">
-            <ul className="space-y-6 text-lg text-black">
-              {items.map(({ id, name }) => (
+            <ul className="space-y-4 mt-8">
+              {items.map(({ id, name, to }) => (
                 <motion.li
                   key={id}
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.1 * id, duration: 0.2 }}
-                  className="hover:text-purple-500 transition duration-200 cursor-pointer"
+                  className="hover:text-purple-500 transition duration-200 cursor-pointer border-b border-gray-800 py-3"
                 >
-                  {name}
+                  <Link
+                    to={to}
+                    spy={true}
+                    smooth={true}
+                    duration={500}
+                    offset={-80}
+                    onClick={() => setMenu(false)}
+                    className="block text-gray-300 hover:text-purple-400 text-base"
+                    activeClass="text-purple-500 font-medium"
+                  >
+                    {name}
+                  </Link>
                 </motion.li>
               ))}
             </ul>
 
-            {/* Resume Button */}
+            {/* Smaller Resume Button for Mobile */}
             <motion.a
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.3 }}
-              className="mt-6 inline-block text-lg bg-purple-500 hover:bg-purple-400 text-white px-6 py-3 rounded-full shadow-md transition duration-300"
+              className="mt-6 inline-block text-base bg-purple-500 hover:bg-purple-400 text-white px-4 py-2 rounded-full shadow-md transition duration-300"
               href={resume}
-          download="AnshikaBundela'sResume.pdf"
+              download="AnshikaBundela'sResume.pdf"
             >
               Download Resume
             </motion.a>

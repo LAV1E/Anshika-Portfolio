@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, User, MessageSquare, Send, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import { Link } from 'react-scroll';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -83,7 +84,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="relative bg-[#0e0c1e] text-white py-24 overflow-hidden">
+    <div id='contact' className="relative bg-[#0e0c1e] text-white py-24 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div 

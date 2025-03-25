@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-scroll';
+import resume from '../assets/AnshikaBundela\'sResume.pdf';
 
 const Hero = () => {
   const containerVariants = {
@@ -7,7 +9,7 @@ const Hero = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.4, // Increased for smoother delay
+        staggerChildren: 0.4,
         delayChildren: 0.2,
       },
     },
@@ -22,14 +24,17 @@ const Hero = () => {
         type: 'spring',
         stiffness: 60,
         damping: 15,
-        mass: 1, // Reduced mass for softer motion
+        mass: 1,
       },
     },
   };
 
   return (
-    <div className="text-white py-16 bg-[#0e0c1e] min-h-screen flex flex-col justify-center items-center relative overflow-hidden">
-      {/* Animated Background Elements */}
+    <section 
+      id="home" 
+      className="text-white pt-32 pb-16 bg-[#0e0c1e] min-h-screen flex flex-col justify-center items-center relative overflow-hidden"
+    >
+      {/* Floating Gradient Blobs */}
       <motion.div
         className="absolute top-20 left-10 w-32 h-32 bg-purple-500 rounded-full opacity-20 blur-3xl"
         animate={{
@@ -38,11 +43,12 @@ const Hero = () => {
           opacity: [0.3, 0.7, 0.3],
         }}
         transition={{
-          duration: 8, // Slower for a more relaxed feel
+          duration: 8,
           repeat: Infinity,
           ease: 'easeInOut',
         }}
       />
+      
       <motion.div
         className="absolute bottom-10 right-10 w-40 h-40 bg-purple-400 rounded-full opacity-30 blur-3xl"
         animate={{
@@ -57,12 +63,11 @@ const Hero = () => {
         }}
       />
 
-      {/* Pulsating Gradient Ring */}
+      {/* Animated Gradient Ring */}
       <motion.div
         className="absolute top-1/3 left-1/3 w-48 h-48 rounded-full border-[8px] border-transparent"
         style={{
-          background:
-            'conic-gradient(from 180deg at 50% 50%, rgba(128, 0, 128, 0.5), rgba(0, 0, 255, 0.3), rgba(128, 0, 128, 0.5))',
+          background: 'conic-gradient(from 180deg at 50% 50%, rgba(128, 0, 128, 0.5), rgba(0, 0, 255, 0.3), rgba(128, 0, 128, 0.5))',
           filter: 'blur(10px)',
         }}
         animate={{
@@ -71,70 +76,120 @@ const Hero = () => {
           rotate: [0, 180, 360],
         }}
         transition={{
-          duration: 10, // Slower rotation for a subtle effect
+          duration: 10,
           repeat: Infinity,
           ease: 'easeInOut',
         }}
       />
 
-      {/* Hero Content with Smooth Staggered Animation */}
+      {/* Main Content */}
       <motion.div
-        className="text-center px-4 z-10"
+        className="text-center px-4 z-10 max-w-4xl mx-auto"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
+        {/* Headline */}
         <motion.h1
-          className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight"
+          className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight"
           variants={itemVariants}
         >
           Hi, I'm <span className="text-purple-400">Anshika</span> 👩‍💻
         </motion.h1>
+        
+        {/* Subtitle */}
         <motion.p
-          className="text-lg md:text-xl text-gray-400 mb-6"
+          className="text-lg md:text-xl lg:text-2xl text-gray-400 mb-6"
           variants={itemVariants}
         >
-          A passionate <span className="text-purple-300">Full Stack Developer</span> who loves crafting clean and scalable web applications.
+          A passionate <span className="text-purple-300 font-medium">Full Stack Developer</span> specializing in modern web technologies
         </motion.p>
+        
+        {/* Description */}
         <motion.p
-          className="text-base md:text-lg text-gray-500 mb-8"
+          className="text-base md:text-lg text-gray-500 mb-8 max-w-2xl mx-auto"
           variants={itemVariants}
         >
-          From frontend to backend, I bring ideas to life through clean code and creative solutions.
+          I build responsive, accessible, and performant web applications with clean code and intuitive user experiences.
         </motion.p>
 
-        {/* Buttons with Smooth Hover Effects */}
+        {/* Action Buttons */}
         <motion.div
-          className="flex gap-6 justify-center"
+          className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
           variants={itemVariants}
         >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{
-              type: 'spring',
-              stiffness: 120,
-              damping: 10,
-            }}
-            className="bg-purple-500 hover:bg-purple-400 text-white px-6 py-3 rounded-full shadow-lg transition duration-300"
+          {/* Hire Me Button - Scrolls to Contact */}
+          <Link 
+            to="contact" 
+            spy={true}
+            smooth={true}
+            duration={500}
+            offset={-80}
+            className="w-full sm:w-auto"
           >
-            Hire Me
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
+            <motion.button
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 10px 25px -5px rgba(168, 85, 247, 0.4)"
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{
+                type: 'spring',
+                stiffness: 120,
+                damping: 10,
+              }}
+              className="bg-purple-500 hover:bg-purple-400 text-white px-8 py-3 rounded-full shadow-lg transition-all duration-300 w-full"
+            >
+              Get In Touch
+            </motion.button>
+          </Link>
+          
+          {/* Download Resume Button */}
+          <motion.a
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 10px 25px -5px rgba(168, 85, 247, 0.2)"
+            }}
             whileTap={{ scale: 0.95 }}
             transition={{
               type: 'spring',
               stiffness: 120,
               damping: 10,
             }}
-            className="border-2 border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white px-6 py-3 rounded-full transition duration-300"
+            href={resume}
+            download="AnshikaBundela_Resume.pdf"
+            className="border-2 border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white px-8 py-3 rounded-full transition-all duration-300 text-center w-full sm:w-auto"
           >
             Download Resume
-          </motion.button>
+          </motion.a>
         </motion.div>
+
+        {/* Social Links or Additional CTA can be added here */}
       </motion.div>
-    </div>
+
+      {/* Optional: Animated Scroll Down Indicator */}
+      <motion.div 
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        <Link 
+          to="about" 
+          smooth={true} 
+          duration={500}
+          offset={-80}
+          className="cursor-pointer"
+        >
+          <div className="w-6 h-10 border-2 border-purple-400 rounded-full flex justify-center">
+            <motion.div
+              className="w-1 h-2 bg-purple-400 rounded-full mt-2"
+              animate={{ y: [0, 4, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+          </div>
+        </Link>
+      </motion.div>
+    </section>
   );
 };
 
